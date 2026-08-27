@@ -20,17 +20,23 @@ The application was developed using ServiceNow's scoped application development,
 
 ## System Architecture
 
-The application follows a ServiceNow-based architecture:
-
-**Service Portal Frontend**
-↓
-**Custom Pages & HTML Widget**
-↓
-**Garden Record Producer**
-↓
-**Indoor Gardening Requests Table**
-↓
-**Flow Designer & Approval Automation**
+```text
+User
+  ↓
+ServiceNow Service Portal
+  ↓
+IGMS Home Page
+  ↓
+Create Gardening Request
+  ↓
+Garden Record Producer
+  ↓
+Indoor Gardening Requests
+  ↓
+Flow Designer
+  ↓
+Approval / Completion Notification
+```
 
 ---
 
@@ -62,8 +68,6 @@ The table contains fields including:
 * Description
 * Work Notes
 
----
-
 ### 3. Application Roles
 
 Five application roles were created:
@@ -74,32 +78,24 @@ Five application roles were created:
 * `x_1989080_indoor_0.x_1834346_igsm_technician_role`
 * `x_1989080_indoor_0.x_1834347_igsm_requester_role`
 
----
-
 ### 4. Service Portal Frontend
 
 The user-facing frontend was implemented using **ServiceNow Service Portal**.
 
 #### IGMS Home Page
 
-A custom Service Portal page named **`igms`** was created with a dashboard-style layout.
-
-The page provides options for:
+A custom Service Portal page named **`igms`** provides a dashboard-style interface with options for:
 
 * **Create Gardening Request**
 * **My Gardening Requests**
 
 #### Create Gardening Request
 
-The **Create Gardening Request** option opens the actual **Garden Record Producer** directly.
-
-This allows users to submit an indoor gardening request through the Service Portal.
+The **Create Gardening Request** option opens the actual **Garden Record Producer** directly, allowing users to submit an indoor gardening request.
 
 #### My Gardening Requests
 
-A custom Service Portal page named **`igms_my_requests`** was created to display the user's gardening requests.
-
-The page displays information including:
+A custom Service Portal page named **`igms_my_requests`** displays the user's gardening requests, including:
 
 * Request Number
 * Plant Type
@@ -107,17 +103,13 @@ The page displays information including:
 * Priority
 * State
 
----
-
 ### 5. Garden Record Producer
 
 A **Garden Record Producer** was created and mapped to the **Indoor Gardening Requests** table.
 
 Variables were created and mapped to the relevant request fields.
 
-The Record Producer is also used as the user-facing request form from the Service Portal.
-
----
+The Record Producer serves as the user-facing request form from the Service Portal.
 
 ### 6. Flow Designer
 
@@ -134,21 +126,19 @@ Two flows were created for the Indoor Gardening Management System.
 1. Create or Update Record
 2. Ask For Approval on Indoor Gardening Requests
 
-The flow was tested successfully using the ServiceNow test functionality.
+The flow was tested successfully using ServiceNow's test functionality.
 
 #### Indoor Gardening Request Completion Notification
 
 A second flow named **Indoor Gardening Request Completion Notification** was created.
 
-The flow is associated with the **Indoor Gardening Requests** table and uses a **Send Email** action for completion notification based on its configured trigger conditions.
-
----
+The flow is associated with the Indoor Gardening Requests table and uses a **Send Email** action for completion notification based on its configured trigger conditions.
 
 ### 7. Approval Relationship
 
 A relationship named **Indoor Gardening Request Approvals** was created.
 
-The relationship connects:
+It connects:
 
 * **Applies to table:** Indoor Gardening Requests
 * **Queries from table:** Approval `[sysapproval_approver]`
@@ -159,33 +149,23 @@ This relationship allows approval information to be associated with the Indoor G
 
 ## Technologies and Platform
 
-* **ServiceNow**
-* **ServiceNow Studio**
-* **Workflow Studio**
-* **Service Portal**
-* **Table Builder**
-* **Flow Designer**
-* **Record Producer**
-* **Scoped Application Development**
-
----
-
-## Project Purpose
-
-The purpose of IGMS is to provide a structured ServiceNow-based system for managing indoor gardening service requests through a user-facing Service Portal and supporting backend request management and automation.
-
-The system connects the user-facing request experience with the **Indoor Gardening Requests** table, approval processing, and request completion notification.
+* ServiceNow
+* ServiceNow Studio
+* Workflow Studio
+* Service Portal
+* Table Builder
+* Flow Designer
+* Record Producer
+* Scoped Application Development
 
 ---
 
 ## Project Workflow
 
-The overall request workflow can be represented as:
-
 ```text
 User
   ↓
-Service Portal
+IGMS Service Portal
   ↓
 IGMS Home Page
   ↓
@@ -231,55 +211,49 @@ The implemented solution includes:
 
 #### IGMS Home Page
 
-![IGMS Home Page](screenshots/Frontend-Home.png)
-
-#### Create Gardening Request
-
-![Create Gardening Request](screenshots/Create-Gardening-Request.png)
+![IGMS Home Page](Indoor%20Gardening%20Management%20System.png)
 
 #### My Gardening Requests
 
-![My Gardening Requests](screenshots/My-Gardening-Requests.png)
-
----
+![My Gardening Requests](My-Gardening-Requests.png)
 
 ### ServiceNow Application
 
 #### Application
 
-![Indoor Gardening Management System Application](screenshots/Application.png)
+![Indoor Gardening Management System Application](Application.png)
 
 #### Indoor Gardening Requests Table
 
-![Indoor Gardening Requests Table](screenshots/table.png)
-
-#### Application Roles
-
-![IGMS Application Roles](screenshots/Roles.png)
+![Indoor Gardening Requests Table](table.png)
 
 #### Request Records
 
-![Indoor Gardening Request Records](screenshots/Records.png)
+![Indoor Gardening Request Records](Records.png)
+
+#### Application Roles
+
+![IGMS Application Roles](Roles.png)
 
 #### Garden Record Producer
 
-![Garden Record Producer](screenshots/Record%20Producer.png)
+![Garden Record Producer](Record%20Producer.png)
 
 #### Request Management Flow
 
-![Indoor Gardening Request Management Flow](screenshots/Flow.png)
+![Indoor Gardening Request Management Flow](Flow.png)
 
 #### Flow Test
 
-![Flow Test Result](screenshots/Flow-Test.png)
+![Flow Test Result](Flow%20test.png)
 
 #### Approval Relationship
 
-![Indoor Gardening Request Approvals Relationship](screenshots/Approval-Relationship.png)
+![Indoor Gardening Request Approvals Relationship](Approval%20Relationship.png)
 
 #### Completion Notification
 
-![Indoor Gardening Request Completion Notification](screenshots/Completion-Notification.png)
+![Indoor Gardening Request Completion Notification](Completion%20notification.png)
 
 ---
 
